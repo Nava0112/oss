@@ -1,4 +1,4 @@
-name: Run Flask App Tests
+name: Test Flask App in Docker
 
 on:
   push:
@@ -14,16 +14,8 @@ jobs:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🐍 Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+      - name: 🐳 Build Docker image
+        run: docker build -t oss-flask-app .
 
-      - name: 📦 Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest
-
-      - name: ✅ Run tests
-        run: pytest test_app.py
+      - name: ✅ Run tests inside container
+        run: docker run --rm oss-flask-app pytest test_app.py
