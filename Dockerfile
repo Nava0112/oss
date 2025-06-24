@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 ENV LD_LIBRARY_PATH=/opt/oracle/instantclient
 ENV ORACLE_HOME=/opt/oracle/instantclient
@@ -17,6 +17,7 @@ RUN apt-get update && \
 # Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt && pip install pytest
+RUN apt-get update && apt-get install -y gcc python3-dev build-essential
 
 # Copy app code
 COPY . /app
