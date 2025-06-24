@@ -11,8 +11,8 @@ RUN apt-get update && \
     unzip instantclient.zip -d /opt/oracle && \
     rm instantclient.zip && \
     ln -s /opt/oracle/instantclient_23_8 /opt/oracle/instantclient && \
-    ln -s /opt/oracle/instantclient/libclntsh.so.23.1 /opt/oracle/instantclient/libclntsh.so && \
-    ln -s /opt/oracle/instantclient/libocci.so.23.1 /opt/oracle/instantclient/libocci.so
+    ln -sf /opt/oracle/instantclient/libclntsh.so.23.1 /opt/oracle/instantclient/libclntsh.so && \
+    ln -sf /opt/oracle/instantclient/libocci.so.23.1 /opt/oracle/instantclient/libocci.so   
 
 # Install Python dependencies
 COPY requirements.txt .
