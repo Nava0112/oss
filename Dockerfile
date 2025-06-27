@@ -10,7 +10,7 @@ RUN apt-get update && \
     curl -L -o instantclient.zip https://download.oracle.com/otn_software/linux/instantclient/2380000/instantclient-basic-linux.x64-23.8.0.25.04.zip && \
     unzip instantclient.zip -d /opt/oracle && \
     rm instantclient.zip && \
-    ln -s /opt/oracle/instantclient_23_8 /opt/oracle/instantclient && \
+    ln -sf /opt/oracle/instantclient_23_8 /opt/oracle/instantclient && \
     ln -sf /opt/oracle/instantclient/libclntsh.so.23.1 /opt/oracle/instantclient/libclntsh.so && \
     ln -sf /opt/oracle/instantclient/libocci.so.23.1 /opt/oracle/instantclient/libocci.so   
 
